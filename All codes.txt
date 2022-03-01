@@ -1,0 +1,6 @@
+django-admin startproject system
+python3 manage.py startapp libreria
+create urls.py file in app
+import app in settings
+
+create views
