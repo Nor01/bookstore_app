@@ -18,16 +18,20 @@
                 </tr>
             </thead>
             <tbody>
+                {% for book in books %}
                 <tr>
-                    <td scope="row"> 1</td>
-                    <td> DJango con Python3</td>
-                    <td>image.jph</td>
-                    <td>Book for python</td>
-                    <td> 
-                        <a name="" id="" class="btn btn-info" href="{% url 'edit' %}" role="button">Edit</a> 
-                        | 
-                        <a name="" id="" class="btn btn-danger" href="#" role="button">Delete</a>  </td>
+                    <td scope="row"> {{ book.id_book }}</td>
+                    <td> {{ book.title_book }}</td>
+                    <td>
+                        <img src="{{ book.image_book.url }}" alt="" height="100">
+                    </td>
+                    <td>{{ book.description_book }}</td>
+                    <td>
+                        <a name="" id="" class="btn btn-info" href="{% url 'edit' %}" role="button">Edit</a> |
+                        <a name="" id="" class="btn btn-danger" href="#" role="button">Delete</a> </td>
                 </tr>
+
+                {% endfor %}
 
             </tbody>
         </table>
