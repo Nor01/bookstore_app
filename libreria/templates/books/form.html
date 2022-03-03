@@ -1,10 +1,17 @@
 <form enctype="multipart/form-data" method="post" action="">
 
+    {% csrf_token %} {% for item in formulario %}
     <div class="mb-3">
-      <label for="" class="form-label">Name</label>
-      <input type="text"
-        class="form-control" name="" id="" aria-describedby="helpId" placeholder="Name">
-      
+        <label for="" class="form-label">{{item.label}}</label> {% if item.field.widget.input_type == 'file' and item.value %}
+        <br>
+        <img src="{{MEDIA_URL}}/images/{{item.value}}" width="100" alt=""> {% endif %}
+        <input type="{{item.field.widget.input_type}}" value="{{item.value | default:''}}" class="form-control" name="{{ item.name}}" id="" aria-describedby="helpId" placeholder="{{item.label}}">
+
     </div>
 
+    <div class="col-12 help-text">{{item.errors}}</div>
+    {% endfor %}
+
+    <input name="" id="" class="btn btn-success" type="submit" value="Send Information">
+    <a name="" id="" class="btn btn-primary" href="{% url 'books' %}" role="button">Cancel</a>
 </form>

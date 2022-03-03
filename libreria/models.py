@@ -1,7 +1,7 @@
 from distutils.command.upload import upload
-from tkinter import SEL_FIRST
+# from tkinter import SEL_FIRST
 from django.db import models
-from importlib_metadata import version
+# from importlib_metadata import version
 
 class book(models.Model):
     id_book = models.AutoField(primary_key=True)
